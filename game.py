@@ -1,9 +1,10 @@
 import random
 
 
+
 def choose_word():
     with open('words.txt', 'r') as file:
-        words = file.readlines()
+        words = file.read().split()
 
     return random.choice(words)
 
@@ -12,7 +13,7 @@ def play_game():
     word = choose_word()
     guessed = "_" * len(word)
     guessed_letters = []
-    attempts = 6
+    attempts = len(word)
 
     print("Lets start plat game 'Guess word'!")
     print("You have: ", attempts, "attempts. The word consists of", len(word), "letters.")
@@ -47,6 +48,6 @@ def play_game():
             print("Invalid input.")
 
     if "_" not in guessed:
-        print("\nCongratulations, you guessed the word -", word + "!")
+        print("\nCongratulations, you guessed the word -", word + " !")
     else:
-        print("\nUnfortunately, you lost. The right word was -", word + ".")
+        print("\nUnfortunately, you lost. The right word was -", word)
